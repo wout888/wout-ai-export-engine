@@ -3,226 +3,851 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Wout's AI Export Engine</title>
+  <title>Asian Wood Panels — Solid Wood Panels from Asia for European Trade</title>
+  <meta name="description" content="Rubberwood and acacia solid wood panels sourced directly from trusted plantations in Vietnam and Thailand. FSC certified. EUDR compliant. Supplying European importers, distributors and manufacturers.">
   <style>
-    * { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:       #3d6b1f;
+      --green-light: #eef4e8;
+      --green-mid:   #c8ddb4;
+      --dark:        #1a2412;
+      --text:        #1a2412;
+      --muted:       #5a6652;
+      --border:      #d8e4ce;
+      --white:       #ffffff;
+      --bg-alt:      #f7faf4;
+    }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: #18212f;
-      background:
-        radial-gradient(circle at top left, #dceadf 0, transparent 32%),
-        linear-gradient(135deg, #f7f4ee 0%, #eef2f4 100%);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      font-size: 16px;
+      line-height: 1.6;
     }
 
-    header {
-      padding: 28px 7%;
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 6%;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
+      height: 64px;
     }
 
-    .logo {
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      font-size: 20px;
+    .nav-logo {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--dark);
+      text-decoration: none;
+      letter-spacing: -0.3px;
     }
 
-    .badge {
-      font-size: 13px;
-      padding: 9px 14px;
-      border: 1px solid rgba(24,33,47,0.15);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.6);
-    }
+    .nav-logo span { color: var(--green); }
 
-    .hero {
-      min-height: 78vh;
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 42px;
-      align-items: center;
-      padding: 40px 7% 80px;
-    }
-
-    h1 {
-      font-size: clamp(44px, 6vw, 82px);
-      line-height: 0.95;
-      margin: 0 0 28px;
-      letter-spacing: -3px;
-    }
-
-    .lead {
-      font-size: 22px;
-      line-height: 1.55;
-      max-width: 720px;
-      color: #3e4a59;
-      margin-bottom: 34px;
-    }
-
-    .buttons {
+    .nav-links {
       display: flex;
-      gap: 14px;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--green); }
+
+    .nav-cta {
+      background: var(--green);
+      color: white !important;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover { background: #2f5318 !important; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 88vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(15,25,8,0.82) 0%,
+        rgba(15,25,8,0.35) 55%,
+        rgba(15,25,8,0.10) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 6% 72px;
+      max-width: 760px;
+    }
+
+    .hero-label {
+      display: inline-block;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.85);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 600;
+      color: white;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.80);
+      line-height: 1.6;
+      max-width: 560px;
+      margin-bottom: 32px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
-    .btn {
-      display: inline-block;
-      text-decoration: none;
-      padding: 15px 22px;
-      border-radius: 12px;
-      font-weight: 700;
-    }
-
     .btn-primary {
-      background: #18212f;
+      background: var(--green);
       color: white;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s;
     }
 
-    .btn-secondary {
-      color: #18212f;
-      background: rgba(255,255,255,0.7);
-      border: 1px solid rgba(24,33,47,0.14);
+    .btn-primary:hover { background: #2f5318; }
+
+    .btn-ghost {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s;
     }
 
-    .panel {
-      background: rgba(255,255,255,0.75);
-      border: 1px solid rgba(24,33,47,0.10);
-      border-radius: 28px;
-      padding: 34px;
-      box-shadow: 0 24px 70px rgba(24,33,47,0.12);
+    .btn-ghost:hover { background: rgba(255,255,255,0.2); }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--dark);
+      padding: 18px 6%;
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      align-items: center;
     }
 
-    .panel h2 {
-      margin-top: 0;
-      font-size: 28px;
-      letter-spacing: -1px;
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
     }
 
-    .step {
-      padding: 18px 0;
-      border-bottom: 1px solid rgba(24,33,47,0.10);
+    .trust-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green-mid);
+      flex-shrink: 0;
     }
 
-    .step:last-child { border-bottom: 0; }
+    /* ── SECTIONS ── */
+    .section { padding: 88px 6%; }
+    .section-alt { background: var(--bg-alt); }
 
-    .step strong {
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(26px, 3.5vw, 40px);
+      font-weight: 600;
+      color: var(--dark);
+      letter-spacing: -0.8px;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    .section-sub {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.65;
+      margin-bottom: 52px;
+    }
+
+    /* ── PRODUCTS ── */
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .product-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .product-img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      object-position: center;
       display: block;
-      font-size: 18px;
-      margin-bottom: 5px;
     }
 
-    .step span {
-      color: #637083;
-      line-height: 1.45;
+    .product-body { padding: 28px; }
+
+    .product-body h3 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: -0.4px;
     }
 
-    .cards {
-      padding: 0 7% 70px;
+    .product-body p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .spec-list {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .spec-list li {
+      font-size: 13px;
+      color: var(--muted);
+      padding: 5px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .spec-list li:last-child { border-bottom: none; }
+    .spec-list li strong { color: var(--text); font-weight: 500; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+
+    .tag {
+      background: var(--green-light);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    /* ── APPLICATIONS ── */
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .app-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 20px;
+    }
+
+    .app-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--green-light);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      font-size: 20px;
+    }
+
+    .app-card h4 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .app-card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* ── SPLIT SECTION ── */
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .split-img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+    }
+
+    /* ── WHY US ── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .why-card {
+      padding: 28px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .why-number {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--green);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .why-card h4 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
+
+    .why-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── CERTIFICATIONS ── */
+    .cert-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      gap: 20px;
     }
 
-    .card {
-      background: rgba(255,255,255,0.72);
-      border: 1px solid rgba(24,33,47,0.10);
-      border-radius: 22px;
-      padding: 26px;
+    .cert-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
     }
 
-    .card h3 {
-      margin-top: 0;
-      font-size: 21px;
+    .cert-badge {
+      display: inline-block;
+      background: var(--green);
+      color: white;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 6px;
+      margin-bottom: 14px;
     }
 
-    .card p {
-      color: #536173;
-      line-height: 1.5;
-      margin-bottom: 0;
+    .cert-card h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
     }
 
-    footer {
-      padding: 28px 7%;
-      color: #6b7685;
+    .cert-card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── CONTACT ── */
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus {
+      border-color: var(--green);
+    }
+
+    .contact-form textarea { resize: vertical; min-height: 120px; }
+
+    .contact-form button {
+      background: var(--green);
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s;
+      align-self: flex-start;
+    }
+
+    .contact-form button:hover { background: #2f5318; }
+
+    .contact-info h3 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      letter-spacing: -0.4px;
+    }
+
+    .contact-info p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .contact-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-detail-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
       font-size: 14px;
     }
 
-    @media (max-width: 850px) {
-      .hero { grid-template-columns: 1fr; }
-      .cards { grid-template-columns: 1fr; }
-      h1 { letter-spacing: -2px; }
+    .contact-detail-item .label {
+      color: var(--muted);
+      min-width: 80px;
+    }
+
+    .contact-detail-item a {
+      color: var(--green);
+      text-decoration: none;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.55);
+      padding: 32px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      font-size: 15px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .footer-logo span { color: var(--green-mid); }
+
+    footer p { font-size: 13px; }
+
+    footer a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: rgba(255,255,255,0.85); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .products-grid,
+      .split,
+      .contact-wrap,
+      .why-grid { grid-template-columns: 1fr; }
+
+      .apps-grid { grid-template-columns: 1fr 1fr; }
+      .cert-grid { grid-template-columns: 1fr 1fr; }
+
+      .nav-links { display: none; }
+
+      .split-img { height: 300px; }
+
+      .hero-content { padding-bottom: 48px; }
+    }
+
+    @media (max-width: 560px) {
+      .apps-grid,
+      .cert-grid { grid-template-columns: 1fr; }
+      .trust-bar { gap: 16px; }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="logo">AEE OS</div>
-    <div class="badge">Version 0.1 · Live on Cloudflare Pages</div>
-  </header>
 
-  <main>
-    <section class="hero">
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Asian<span>Wood</span>Panels</a>
+    <ul class="nav-links">
+      <li><a href="#products">Products</a></li>
+      <li><a href="#applications">Applications</a></li>
+      <li><a href="#why-us">Why us</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Request specifications</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img src="images/hero.png" alt="Solid wood kitchen island with acacia worktop" class="hero-img">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-label">Solid wood panels — direct from Asia</div>
+      <h1>Built for European<br>trade. Sourced<br>from Asia.</h1>
+      <p>Rubberwood and acacia solid wood panels from trusted plantation sources in Vietnam and Thailand. FSC certified. EUDR compliant. Personally verified.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Request specifications</a>
+        <a href="#products" class="btn-ghost">View products</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item"><div class="trust-dot"></div>FSC certified available</div>
+    <div class="trust-item"><div class="trust-dot"></div>EUDR compliant</div>
+    <div class="trust-item"><div class="trust-dot"></div>Plantation-grown species</div>
+    <div class="trust-item"><div class="trust-dot"></div>8+ years supplying demanding markets</div>
+    <div class="trust-item"><div class="trust-dot"></div>Direct factory relationships</div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <section class="section" id="products">
+    <div class="section-label">Our products</div>
+    <h2 class="section-title">Two species. Every application.</h2>
+    <p class="section-sub">We supply rubberwood and acacia solid wood panels in standard and custom dimensions. Both species are plantation-grown, FSC certified on request, and available for consistent container-volume supply.</p>
+
+    <div class="products-grid">
+
+      <!-- Rubberwood -->
+      <div class="product-card">
+        <img src="images/rubberwood-product.png" alt="Rubberwood solid wood panel" class="product-img">
+        <div class="product-body">
+          <h3>Rubberwood panels</h3>
+          <p>Light colour with a clean, birch-like appearance. Excellent dimensional stability and consistency. One of the most reliable hardwoods for interior applications and worktops.</p>
+          <ul class="spec-list">
+            <li><span>Colour</span><strong>Light blonde, birch-like</strong></li>
+            <li><span>Construction</span><strong>Finger-jointed</strong></li>
+            <li><span>Common thicknesses</span><strong>26 mm / 38 mm / 44 mm</strong></li>
+            <li><span>Moisture content</span><strong>8% – 12%</strong></li>
+            <li><span>Glue system</span><strong>D4</strong></li>
+            <li><span>Sanding</span><strong>Grit 180 / 240 / 320</strong></li>
+            <li><span>Certification</span><strong>FSC available</strong></li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Worktops</span>
+            <span class="tag">Kitchen islands</span>
+            <span class="tag">Stair components</span>
+            <span class="tag">Furniture</span>
+            <span class="tag">Interior joinery</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Acacia -->
+      <div class="product-card">
+        <img src="images/acacia-stained-product.png" alt="Acacia solid wood panel" class="product-img">
+        <div class="product-body">
+          <h3>Acacia panels</h3>
+          <p>Rich warm grain with a distinctive natural character. Available in natural and stained finishes. A popular choice for worktops, furniture and stair components across European markets.</p>
+          <ul class="spec-list">
+            <li><span>Colour</span><strong>Warm brown, rich grain</strong></li>
+            <li><span>Construction</span><strong>Finger-jointed / edge glued</strong></li>
+            <li><span>Common thicknesses</span><strong>26 mm / 38 mm / 44 mm</strong></li>
+            <li><span>Moisture content</span><strong>8% – 12%</strong></li>
+            <li><span>Glue system</span><strong>D4</strong></li>
+            <li><span>Sanding</span><strong>Grit 180 / 240 / 320</strong></li>
+            <li><span>Certification</span><strong>FSC available</strong></li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Worktops</span>
+            <span class="tag">Kitchen islands</span>
+            <span class="tag">Stair components</span>
+            <span class="tag">Furniture</span>
+            <span class="tag">Interior joinery</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- APPLICATIONS -->
+  <section class="section section-alt" id="applications">
+    <div class="section-label">Applications</div>
+    <h2 class="section-title">One panel. Many applications.</h2>
+    <p class="section-sub">Our solid wood panels are used across a wide range of industries and interior applications throughout Europe. The buyer defines the application — we supply the material.</p>
+
+    <div class="apps-grid">
+      <div class="app-card">
+        <div class="app-icon">🍳</div>
+        <h4>Kitchen worktops</h4>
+        <p>The most common application across European markets. Both rubberwood and acacia perform excellently as kitchen worktops with proper finishing.</p>
+      </div>
+      <div class="app-card">
+        <div class="app-icon">🏠</div>
+        <h4>Stair components</h4>
+        <p>Panels up to 4–5 metres length available for stair production. Many European buyers optimise cutting locally to their own requirements.</p>
+      </div>
+      <div class="app-card">
+        <div class="app-icon">🪑</div>
+        <h4>Furniture manufacturing</h4>
+        <p>Table tops, shelving, cabinet components and furniture panels. Consistent quality and grading for production environments.</p>
+      </div>
+      <div class="app-card">
+        <div class="app-icon">🏗️</div>
+        <h4>Interior construction</h4>
+        <p>Wall-mounted desks, shelving systems, interior joinery and DIY applications. Flexible dimensions to suit project requirements.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAIRCASE SPLIT -->
+  <section class="section">
+    <div class="split">
       <div>
-        <h1>Wout's AI Export Engine</h1>
-        <p class="lead">
-          A fast, low-cost operating system for launching export campaigns,
-          product websites, datasheets, AI images and targeted outreach for the
-          global wood products industry.
+        <div class="section-label">In practice</div>
+        <h2 class="section-title">From panel to finished interior.</h2>
+        <p style="font-size:16px; color:var(--muted); line-height:1.7; margin-bottom:24px;">
+          Our panels arrive kiln dried, sanded and ready for processing. European manufacturers, importers and distributors rely on consistent quality and reliable supply — container after container.
         </p>
-        <div class="buttons">
-          <a class="btn btn-primary" href="#">Build first campaign</a>
-          <a class="btn btn-secondary" href="#">View roadmap</a>
+        <p style="font-size:16px; color:var(--muted); line-height:1.7; margin-bottom:32px;">
+          Custom dimensions, specific moisture content requirements, grading specifications and finish requirements are discussed directly — no sales departments, no waiting.
+        </p>
+        <a href="#contact" class="btn-primary" style="display:inline-block;">Discuss your requirements</a>
+      </div>
+      <img src="images/hero-staircase.png" alt="Solid acacia wood staircase in modern European home" class="split-img">
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="section section-alt" id="why-us">
+    <div class="section-label">Why work with us</div>
+    <h2 class="section-title">Not a catalogue.<br>A partnership.</h2>
+    <p class="section-sub">We are a sourcing specialist, not a trading platform. One person who personally visits factories, evaluates quality and stands behind every shipment.</p>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-number">01</div>
+        <h4>Personal factory relationships</h4>
+        <p>We visit production facilities in Vietnam and Thailand directly. Quality is evaluated in person — not from a specification sheet. The factories we work with are chosen for process discipline and continuous improvement, not price alone.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-number">02</div>
+        <h4>Proven track record</h4>
+        <p>8+ years of supplying quality-critical, high-volume markets. The standards demanded by North American retail buyers are among the most rigorous in the world. That experience is what we bring to the European market.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-number">03</div>
+        <h4>Multi-factory flexibility</h4>
+        <p>We work with multiple production facilities — not one factory's agenda. This gives you flexibility on species, dimensions, capacity and pricing. We find the right fit for your requirements, not the other way around.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-number">04</div>
+        <h4>Buyer-first approach</h4>
+        <p>Our business model is commission-based representation. We earn when you get the right product at the right price. There is no reason to oversell or misrepresent — our reputation is the only asset that matters.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="section" id="certifications">
+    <div class="section-label">Compliance &amp; certifications</div>
+    <h2 class="section-title">Sourced responsibly.<br>Documented properly.</h2>
+    <p class="section-sub">European importers face increasing regulatory requirements. We understand this — and our supply chain is built to support your compliance needs.</p>
+
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-badge">FSC</div>
+        <h4>FSC certified</h4>
+        <p>FSC-certified material is available for both rubberwood and acacia panels. Chain of custody documentation provided. Always confirm availability per order as certification depends on source factory allocation.</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-badge">EUDR</div>
+        <h4>EUDR compliant</h4>
+        <p>The EU Deforestation Regulation requires full traceability for wood products entering the EU from December 2026. Both rubberwood and acacia are plantation-grown species. We support EUDR due diligence requirements including geolocation documentation from source.</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-badge">Origin</div>
+        <h4>Plantation-grown</h4>
+        <p>Rubberwood originates from former latex plantations — timber harvested after productive life, not from forest clearance. Acacia is similarly plantation-grown in Vietnam. Both species are well-positioned for responsible sourcing claims.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FACTORY SPLIT -->
+  <section class="section section-alt">
+    <div class="split">
+      <img src="images/factory-production.png" alt="Modern solid wood panel production facility" class="split-img">
+      <div>
+        <div class="section-label">Production</div>
+        <h2 class="section-title">Modern facilities. Consistent output.</h2>
+        <p style="font-size:16px; color:var(--muted); line-height:1.7; margin-bottom:24px;">
+          The factories we work with operate modern sanding and finishing lines, maintain strict moisture control processes and apply quality checks at critical production stages.
+        </p>
+        <p style="font-size:16px; color:var(--muted); line-height:1.7; margin-bottom:32px;">
+          We evaluate production organisation, material flow, quality systems and management attitude — not marketing presentations. Strong process management is a better indicator of quality than any brochure.
+        </p>
+        <a href="#contact" class="btn-primary" style="display:inline-block; background:var(--green);">Request a sample</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="contact-wrap">
+      <div>
+        <div class="section-label">Get in touch</div>
+        <h2 class="section-title">Ready to discuss<br>your requirements?</h2>
+        <div class="contact-info">
+          <p>Send us your specifications — species, dimensions, thicknesses, quantities, certifications required. We respond within one working day.</p>
+          <div class="contact-detail">
+            <div class="contact-detail-item">
+              <span class="label">Email</span>
+              <a href="mailto:info@asianwoodpanels.com">info@asianwoodpanels.com</a>
+            </div>
+            <div class="contact-detail-item">
+              <span class="label">Response</span>
+              <span>Within one working day</span>
+            </div>
+            <div class="contact-detail-item">
+              <span class="label">MOQ</span>
+              <span>Container quantities</span>
+            </div>
+            <div class="contact-detail-item">
+              <span class="label">Origin</span>
+              <span>Vietnam / Thailand</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="panel">
-        <h2>The pipeline</h2>
+      <form class="contact-form" action="mailto:info@asianwoodpanels.com" method="GET" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="text" name="company" placeholder="Company name" required>
+        <input type="email" name="email" placeholder="Email address" required>
+        <input type="text" name="country" placeholder="Country">
+        <select name="interest">
+          <option value="" disabled selected>Product interest</option>
+          <option>Rubberwood panels</option>
+          <option>Acacia panels</option>
+          <option>Both species</option>
+          <option>Sample request</option>
+        </select>
+        <textarea name="message" placeholder="Specifications, quantities, questions..."></textarea>
+        <button type="submit">Send enquiry</button>
+      </form>
+    </div>
+  </section>
 
-        <div class="step">
-          <strong>1. Market opportunity</strong>
-          <span>Spot tariff changes, supply gaps or underserved export markets.</span>
-        </div>
-
-        <div class="step">
-          <strong>2. Factory intake</strong>
-          <span>Collect product specs, photos, certificates, MOQ and capacity.</span>
-        </div>
-
-        <div class="step">
-          <strong>3. AI launch kit</strong>
-          <span>Generate website, product sheet, FAQ, images and outreach copy.</span>
-        </div>
-
-        <div class="step">
-          <strong>4. Outreach engine</strong>
-          <span>Contact the right buyers faster with targeted, credible messaging.</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="cards">
-      <div class="card">
-        <h3>Low fixed cost</h3>
-        <p>Built around GitHub, Cloudflare Pages and reusable static templates.</p>
-      </div>
-
-      <div class="card">
-        <h3>AI-first workflow</h3>
-        <p>Use AI to generate content, translate, improve images and speed up execution.</p>
-      </div>
-
-      <div class="card">
-        <h3>Export focused</h3>
-        <p>Designed for wood products, factories, certifications, specs and B2B buyers.</p>
-      </div>
-    </section>
-  </main>
-
+  <!-- FOOTER -->
   <footer>
-    © 2026 Wout's AI Export Engine · Prototype landing page
+    <div class="footer-logo">Asian<span>Wood</span>Panels</div>
+    <p>Solid wood panels sourced from Vietnam &amp; Thailand · Supplying European trade</p>
+    <p><a href="mailto:info@asianwoodpanels.com">info@asianwoodpanels.com</a></p>
   </footer>
+
 </body>
 </html>
