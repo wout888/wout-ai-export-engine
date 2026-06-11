@@ -2,7 +2,7 @@
 
 ## Vision
 
-Build a lean, AI-powered export engine that dramatically reduces the time between discovering a market opportunity and professionally launching it.
+Build a lean, knowledge-driven, AI-powered export engine that dramatically reduces the time between discovering a market opportunity and professionally launching it.
 
 The objective is not to build websites.
 
@@ -40,6 +40,7 @@ Examples include:
 - Websites
 - Product brochures
 - Product PDFs
+- Datasheets
 - Email drafts
 - Marketing material
 - Translations
@@ -73,6 +74,33 @@ I want customers to know that I have personally evaluated the opportunity and th
 - Build practical tools, not impressive technology.
 - Scale knowledge, not complexity.
 - Quality and credibility are more important than volume.
+- Every external dependency must be optional and replaceable within one working day.
+- Vendor lock-in is a design failure.
+- Store business-critical knowledge in open, portable formats.
+- Knowledge first. Tools second. Models third.
+- The knowledge is the asset. Everything else is replaceable.
+
+## Technical Philosophy
+
+The AI Export Engine is not built around ChatGPT, Claude, Gemini or any other specific AI model.
+
+Its permanent memory lives in structured Markdown files stored in Git and synchronised locally.
+
+The repository is the source of truth.
+
+Any capable AI should be able to consume the same knowledge base and produce the same commercial outputs.
+
+Switching AI providers should never require rebuilding the business.
+
+## Working Philosophy
+
+The purpose of the system is to increase execution speed.
+
+Ideas have little value until they are tested in the real market.
+
+The objective is therefore to launch opportunities quickly, measure results, improve continuously and discard ideas that do not create commercial value.
+
+The system should make experimentation cheap, fast and repeatable.
 
 ## Long-Term Goal
 
